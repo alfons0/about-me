@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bryan Guzmán · Ingeniero de Software Senior</title>
+<meta name="description" content="CV de Bryan Alfonso Guzmán Álvarez — Ingeniero de Software Senior. Backend, sistemas distribuidos y arquitecturas cloud (Java, Go, Ruby on Rails, AWS)." />
+<meta name="author" content="Bryan Alfonso Guzmán Álvarez" />
+<meta property="og:title" content="Bryan Guzmán · Ingeniero de Software Senior" />
+<meta property="og:description" content="Backend, sistemas distribuidos y arquitecturas cloud. 8+ años de experiencia." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --paper:    #EDE7D8;
+    --paper-2:  #E4DCC9;
+    --ink:      #16130E;
+    --ink-soft: #4A453B;
+    --line:     #C9C0AC;
+    --red:      #C8341F;
+    --blue:     #1B4079;
+    --yellow:   #E6B007;
+
+    --maxw: 1080px;
+    --gap: clamp(1.5rem, 4vw, 3.5rem);
+
+    --ff-display: 'Jost', system-ui, sans-serif;
+    --ff-mono: 'DM Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--paper-2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-2) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: var(--ink);
+    font-family: var(--ff-display);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--yellow); color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gap); }
+
+  .mono {
+    font-family: var(--ff-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+  }
+
+  .shape { position: absolute; pointer-events: none; }
+  .shape--circle { border-radius: 50%; }
+  .shape--tri {
+    width: 0; height: 0; background: none;
+    border-left: var(--s, 32px) solid transparent;
+    border-right: var(--s, 32px) solid transparent;
+    border-bottom: calc(var(--s, 32px) * 1.6) solid var(--yellow);
+  }
+
+  header {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--ink);
+    padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2.2rem, 5vw, 3.5rem);
+  }
+
+  .header-art { position: absolute; top: 0; right: 0; width: 46%; height: 100%; max-width: 480px; }
+  .header-art .c1 { top: 14%;  right: 8%;  width: clamp(70px,11vw,150px);  height: clamp(70px,11vw,150px); background: var(--red); }
+  .header-art .c2 { bottom: 16%; right: 30%; width: clamp(44px,7vw,96px); height: clamp(44px,7vw,96px); background: var(--blue); border-radius: 0; }
+  .header-art .c3 { --s: clamp(28px,4.5vw,60px); top: 50%; right: 4%; }
+  .header-art .bar { top: 0; right: 26%; width: 12px; height: 100%; background: var(--ink); }
+
+  .eyebrow { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; }
+  .eyebrow .dot { width: 11px; height: 11px; background: var(--red); border-radius: 50%; }
+
+  h1.name {
+    font-weight: 700;
+    font-size: clamp(2.7rem, 9vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+  }
+  h1.name span { display: block; }
+  h1.name .accent { color: var(--blue); }
+
+  .role {
+    margin-top: 1.5rem;
+    font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+    font-weight: 400;
+    color: var(--ink-soft);
+    max-width: 30ch;
+  }
+
+  .contact {
+    margin-top: 2.2rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+    position: relative; z-index: 2;
+  }
+  .contact a, .contact span {
+    font-family: var(--ff-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: color 0.2s ease;
+  }
+  .contact a::before { content: ""; width: 7px; height: 7px; background: var(--ink); display: inline-block; }
+  .contact a:hover { color: var(--red); }
+  .contact a:nth-child(2)::before { background: var(--blue); }
+  .contact a:nth-child(3)::before { background: var(--yellow); }
+
+  section { padding: clamp(2.6rem, 6vw, 4.5rem) 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.1rem;
+    align-items: baseline;
+    margin-bottom: 2.4rem;
+  }
+  .sec-head .num {
+    font-family: var(--ff-mono);
+    font-size: 0.85rem;
+    color: var(--ink);
+    background: var(--yellow);
+    padding: 0.25rem 0.55rem;
+    align-self: center;
+  }
+  .sec-head h2 {
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3.6vw, 2.1rem);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .perfil p {
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.65;
+    max-width: 60ch;
+  }
+  .perfil strong { font-weight: 600; }
+
+  .job {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 1rem var(--gap);
+    padding: 1.8rem 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .job:first-child { border-top: 2px solid var(--ink); }
+
+  .job-meta .period {
+    font-family: var(--ff-mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    display: block;
+  }
+  .job-meta .dur {
+    font-family: var(--ff-mono);
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+  .job-meta .company {
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin: 0.35rem 0 0.1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .job-meta .company::before {
+    content: ""; width: 14px; height: 14px; flex: none;
+    background: var(--mark, var(--red));
+  }
+  .job:nth-child(2n) .company::before { background: var(--blue); border-radius: 50%; }
+  .job:nth-child(3n) .company::before { background: var(--yellow); }
+  .job-meta .position {
+    font-size: 0.95rem; color: var(--ink-soft); font-weight: 400;
+  }
+
+  .job ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .job li {
+    position: relative; padding-left: 1.4rem;
+    font-weight: 300; font-size: 1rem; line-height: 1.55;
+  }
+  .job li::before {
+    content: ""; position: absolute; left: 0; top: 0.5em;
+    width: 8px; height: 8px; background: var(--ink);
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+  .block .item { padding: 0.4rem 0 1.1rem; }
+  .block .item h3 { font-weight: 600; font-size: 1.1rem; }
+  .block .item .meta { font-family: var(--ff-mono); font-size: 0.75rem; color: var(--ink-soft); margin: 0.2rem 0 0.4rem; }
+  .block .item p { font-weight: 300; font-size: 0.97rem; }
+
+  .tech-group { margin-bottom: 1.8rem; }
+  .tech-group .label { margin-bottom: 0.8rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-family: var(--ff-mono);
+    font-size: 0.8rem;
+    padding: 0.35rem 0.7rem;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .tag:hover { transform: translate(-2px,-2px); box-shadow: 3px 3px 0 var(--ink); }
+  .tag.r:hover { background: var(--red); color: #fff; border-color: var(--red); box-shadow: 3px 3px 0 var(--ink); }
+  .tag.b:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .tag.y:hover { background: var(--yellow); border-color: var(--yellow); }
+
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(2.5rem,6vw,4rem) 0;
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+  footer .marks { display: flex; gap: 0.6rem; }
+  footer .marks i { width: 18px; height: 18px; display: block; }
+  footer .marks .r { background: var(--red); border-radius: 50%; }
+  footer .marks .b { background: var(--blue); }
+  footer .marks .y { width: 0; height: 0; background: none; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 18px solid var(--yellow); }
+  footer .foot-name { font-weight: 600; font-size: 1.2rem; }
+  footer .foot-meta { font-family: var(--ff-mono); font-size: 0.75rem; color: #b8b09c; }
+  footer a:hover { color: var(--yellow); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(18px); animation: rise 0.7s cubic-bezier(0.2,0.7,0.2,1) forwards; }
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .reveal:nth-child(2) { animation-delay: 0.13s; }
+    .reveal:nth-child(3) { animation-delay: 0.21s; }
+    .reveal:nth-child(4) { animation-delay: 0.29s; }
+    .header-art .shape, .header-art .bar { opacity: 0; animation: pop 0.8s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+    .header-art .bar { animation-delay: 0.1s; }
+    .header-art .c1 { animation-delay: 0.25s; }
+    .header-art .c2 { animation-delay: 0.4s; }
+    .header-art .c3 { animation-delay: 0.55s; }
+  }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @keyframes pop { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+
+  @media (max-width: 780px) {
+    .header-art { display: none; }
+    .job { grid-template-columns: 1fr; gap: 0.6rem; }
+    .two-col { grid-template-columns: 1fr; }
+    h1.name { max-width: none; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .header-art { display: none; }
+    section, .job { break-inside: avoid; }
+    footer { background: #fff; color: var(--ink); border-top: 2px solid var(--ink); }
+    .tag:hover { transform: none; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="header-art" aria-hidden="true">
+      <span class="bar"></span>
+      <span class="shape shape--circle c1"></span>
+      <span class="shape c2"></span>
+      <span class="shape shape--tri c3"></span>
+    </div>
+    <div class="wrap">
+      <div class="eyebrow reveal">
+        <span class="dot"></span>
+        <span class="mono">Curriculum Vitae · Santiago, Chile</span>
+      </div>
+      <h1 class="name reveal">
+        <span>Bryan Alfonso</span>
+        <span class="accent">Guzmán Álvarez</span>
+      </h1>
+      <p class="role reveal">
+        Ingeniero de Software Senior.
+        8+ años construyendo integraciones críticas.
+      </p>
+      <nav class="contact reveal">
+        <a href="mailto:bguzmanalvarez@gmail.com">bguzmanalvarez@gmail.com</a>
+        <a href="tel:+56950562516">+56 9 5056 2516</a>
+        <a href="https://www.linkedin.com/in/aguzmanalv" target="_blank" rel="noopener">linkedin.com/in/aguzmanalv</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="perfil wrap">
+      <div class="sec-head">
+        <span class="num">01</span>
+        <h2>Perfil</h2>
+      </div>
+      <p>
+        Ingeniero de software senior con más de <strong>8 años de experiencia</strong>
+        en desarrollo backend y sistemas distribuidos (<strong>Java, Go, Ruby on Rails</strong>),
+        microservicios y arquitecturas cloud en <strong>AWS</strong>. He liderado integraciones
+        críticas para empresas de Estados Unidos y trabajado en diversos rubros
+        (Nubox, Checkr, Mercado Libre), coordinando en inglés con equipos multiculturales.
+        Manejo de herramientas de desarrollo asistido por IA.
+      </p>
+    </section>
+
+    <section class="wrap">
+      <div class="sec-head">
+        <span class="num">02</span>
+        <h2>Experiencia</h2>
+      </div>
+
+      <article class="job">
+        <div class="job-meta">
+          <span class="period">Jun 2025 — Jun 2026</span>
+          <span class="dur">1 año</span>
+          <span class="company">Nubox</span>
+          <span class="position">Product Engineer</span>
+        </div>
+        <ul>
+          <li>Reducción de la deuda técnica en un 90% mediante refactorización y optimización de código.</li>
+          <li>Integración bancaria con Fintoc mediante microservicios en Java 17.</li>
+          <li>Módulo de facturación recurrente utilizando microservicios y automatizaciones con n8n.</li>
+          <li>Integración con el link de pago de Fintoc usando microservicios en Java 17, servicios de AWS, NestJS y React.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-meta">
+          <span class="period">Jul 2024 — May 2025</span>
+          <span class="dur">10 meses</span>
+          <span class="company">Apiux</span>
+          <span class="position">Senior Developer Fullstack</span>
+        </div>
+        <ul>
+          <li>Desarrollo y mantenimiento de aplicaciones utilizando Java 11 y Spring Boot.</li>
+          <li>Desarrollo de funciones AWS Lambda y AWS Step Functions con Java.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-meta">
+          <span class="period">Oct 2021 — Abr 2024</span>
+          <span class="dur">2 años 6 meses</span>
+          <span class="company">Checkr</span>
+          <span class="position">Senior Software Engineer</span>
+        </div>
+        <ul>
+          <li>Lideré integraciones críticas entre los servicios de Checkr y plataformas ATS (Workday, SuccessFactors, iCIMS) usando Java (8, 11, 17) y Ruby on Rails, coordinando en inglés con equipos multiculturales.</li>
+          <li>Desarrollo y mantenimiento de un módulo Java para enviar trazas e información de rendimiento a Datadog usando Java 8.</li>
+          <li>Diseñé y mantuve un sistema robusto de colas para la integración y sincronización de datos backend con Ruby on Rails 7 y PostgreSQL.</li>
+          <li>Desarrollé una aplicación de procesamiento de eventos en tiempo real para el estado de las verificaciones usando Ruby on Rails 7 y Kafka.</li>
+          <li>Diseñé la arquitectura frontend e implementé flujos seguros de autenticación de clientes vía OAuth utilizando React.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-meta">
+          <span class="period">Ene 2020 — Oct 2021</span>
+          <span class="dur">1 año 10 meses</span>
+          <span class="company">Mercado Libre</span>
+          <span class="position">Software Development SSr Analyst</span>
+        </div>
+        <ul>
+          <li>Diseñé la arquitectura de microservicios y la vista de producto para el vertical de clasificados usando Java 11 y Java RX.</li>
+          <li>Lideré la migración del sistema de correos comprador-vendedor, implementando servicios backend en Java 11 y Go, y React en el frontend.</li>
+          <li>Desarrollé el nuevo sistema core de listado para los verticales de inmuebles, vehículos y servicios usando Java 11 y React.</li>
+          <li>Optimicé la infraestructura migrando el sistema de conversión de imágenes a un microservicio existente para eliminar duplicidad.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-meta">
+          <span class="period">May 2018 — Ene 2020</span>
+          <span class="dur">1 año 9 meses</span>
+          <span class="company">Lemontech</span>
+          <span class="position">Entry Software Engineer</span>
+        </div>
+        <ul>
+          <li>Desarrollo fullstack para software legal, consumiendo datos mediante APIs RESTful y web scraping desde sistemas judiciales de LATAM con Ruby on Rails 5, JavaScript y MySQL.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-meta">
+          <span class="period">Ene 2018 — Abr 2018</span>
+          <span class="dur">4 meses</span>
+          <span class="company">Amisoft</span>
+          <span class="position">Software Engineer</span>
+        </div>
+        <ul>
+          <li>Desarrollé funcionalidades clave para el frontend y backend de la Oficina Judicial Virtual del Poder Judicial de Chile usando Java 8, Spring MVC y Spring Boot.</li>
+          <li>Diseñé e implementé el módulo de integración con ClaveÚnica para trámites gubernamentales en línea con Java 8, Bootstrap 3 y Oracle SQL.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="wrap">
+      <div class="two-col">
+        <div class="block">
+          <div class="sec-head">
+            <span class="num">03</span>
+            <h2>Educación</h2>
+          </div>
+          <div class="item">
+            <h3>Universidad de Santiago de Chile</h3>
+            <p class="meta">2012 — 2017</p>
+            <p>Ingeniero Civil en Informática (BS).</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="sec-head">
+            <span class="num">04</span>
+            <h2>Docencia</h2>
+          </div>
+          <div class="item">
+            <h3>Profesor</h3>
+            <p class="meta">2016 — 2017 · USACH</p>
+            <p>Organización de Computadores y Fundamentos de Programación — cátedra y laboratorio.</p>
+          </div>
+          <div class="item">
+            <h3>Ayudante de cátedra</h3>
+            <p class="meta">Mar 2014 — Dic 2017 · USACH</p>
+            <p>Gestión de Proyectos de Software, Análisis Estadístico, Modelado y Simulación, Estructura de Computadores, entre otros.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="sec-head">
+        <span class="num">05</span>
+        <h2>Tecnologías</h2>
+      </div>
+
+      <div class="tech-group">
+        <p class="mono label">Lenguajes &amp; Frameworks</p>
+        <div class="tags">
+          <span class="tag r">Java 8 · 11 · 17</span>
+          <span class="tag r">Ruby on Rails</span>
+          <span class="tag r">Go</span>
+          <span class="tag r">NestJS</span>
+          <span class="tag r">React</span>
+          <span class="tag r">TypeScript</span>
+          <span class="tag r">JavaScript</span>
+          <span class="tag r">Spring Boot</span>
+          <span class="tag r">Spring MVC</span>
+          <span class="tag r">Groovy</span>
+          <span class="tag r">MuleSoft</span>
+          <span class="tag r">MyBatis</span>
+          <span class="tag r">Bootstrap</span>
+        </div>
+      </div>
+
+      <div class="tech-group">
+        <p class="mono label">Bases de Datos &amp; Eventos</p>
+        <div class="tags">
+          <span class="tag b">PostgreSQL</span>
+          <span class="tag b">MySQL</span>
+          <span class="tag b">Oracle Database</span>
+          <span class="tag b">SQL</span>
+          <span class="tag b">Apache Kafka</span>
+        </div>
+      </div>
+
+      <div class="tech-group">
+        <p class="mono label">Herramientas</p>
+        <div class="tags">
+          <span class="tag y">AWS Lambda</span>
+          <span class="tag y">Step Functions</span>
+          <span class="tag y">S3</span>
+          <span class="tag y">DynamoDB</span>
+          <span class="tag y">SQS</span>
+          <span class="tag y">Datadog</span>
+          <span class="tag y">New Relic</span>
+          <span class="tag y">Git</span>
+          <span class="tag y">Jira</span>
+          <span class="tag y">Scrum</span>
+          <span class="tag y">n8n</span>
+          <span class="tag y">Claude Code</span>
+          <span class="tag y">Cursor</span>
+        </div>
+      </div>
+
+      <div class="tech-group">
+        <p class="mono label">Idiomas</p>
+        <div class="tags">
+          <span class="tag">Español — nativo</span>
+          <span class="tag">Inglés — avanzado / profesional</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <div class="foot-name">Bryan Alfonso Guzmán Álvarez</div>
+        <div class="foot-meta">Ingeniero de Software Senior · Santiago, Chile · 2026</div>
+      </div>
+      <div class="marks" aria-hidden="true">
+        <i class="r"></i><i class="b"></i><i class="y"></i>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
